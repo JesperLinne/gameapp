@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom"
 import { NewPage } from './NewPage'
 import { HejPage } from './HejPage'
 
@@ -10,5 +10,5 @@ export const App = () => {
         <Route path="/HejPage" element={<HejPage />} />
       </Routes>
     </div>
-  );
+  )
 }
