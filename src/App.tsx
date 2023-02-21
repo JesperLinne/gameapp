@@ -1,49 +1,14 @@
-import React, { useState } from "react"
-import "firebase/auth"
-import './App.css';
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "./firebase"
+import { Route, Routes } from "react-router-dom";
+import { NewPage } from './NewPage'
+import { HejPage } from './HejPage'
 
-const App = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      console.log('error ', error)
-    }
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value)
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value)
-  };
-
+export const App = () => {
   return (
-    <div>
-      <h1>Login
-      </h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={handleEmailChange} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} required />
-        </div>
-        {error && <div>{error}</div>}
-        <button type="submit">Login</button>
-      </form>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<NewPage />} />
+        <Route path="/HejPage" element={<HejPage />} />
+      </Routes>
     </div>
-  )
+  );
 }
-
-export default App;
